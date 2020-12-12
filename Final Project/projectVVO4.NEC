@@ -1,0 +1,38 @@
+CM Example 1 :	Dipole in free space 	
+CM See GetStarted.txt
+CM 
+CM 
+CM 
+CM 
+CE
+SY L=0.076887	'Length in meters of the driver
+SY Ld=0.07093	'Length in meters of the director
+SY Lr=0.078353	'Length in meters of the reflector
+SY d1=0.012204	'distance between the driver and reflector
+SY d2=7.148e-3	'distance between the driver and director
+SY alpha=44.30387	'angle w.r.t. z axis
+SY Rz=cos(alpha)	'z component
+SY Rx=sin(alpha)	'x component
+SY d=0.068555
+GW	1	20	-d1	0	0	-d1+0.5*Lr*Rx	0	0.5*Lr*Rz	0.00051
+GW	2	20	0	0	0	0.5*L*Rx	0	0.5*L*Rz	0.00051
+GW	3	20	d2	0	0	d2+0.5*Ld*Rx	0	0.5*Ld*Rz	0.00051
+GW	4	20	-d1	0	0	-d1+0.5*Lr*Rx	0	-0.5*Lr*Rz	0.00051
+GW	5	20	0	0	0	0.5*L*Rx	0	-0.5*L*Rz	0.00051
+GW	6	20	d2	0	0	d2+0.5*Ld*Rx	0	-0.5*Ld*Rz	0.00051
+GW	7	20	-d1	0	d	-d1+0.5*Lr*Rx	0	0.5*Lr*Rz+d	0.00051	'second antenna
+GW	8	20	0	0	d	0.5*L*Rx	0	0.5*L*Rz+d	0.00051
+GW	9	20	d2	0	d	d2+0.5*Ld*Rx	0	0.5*Ld*Rz+d	0.00051
+GW	10	20	-d1	0	d	-d1+0.5*Lr*Rx	0	-0.5*Lr*Rz+d	0.00051
+GW	11	20	0	0	d	0.5*L*Rx	0	-0.5*L*Rz+d	0.00051
+GW	12	20	d2	0	d	d2+0.5*Ld*Rx	0	-0.5*Ld*Rz+d	0.00051
+GE	0
+GN	-1
+EK
+EX	0	2	1	0	1.5	0	0	'Voltage source
+EX	0	5	1	0	-1.5	0	0	'Voltage source
+EX	0	8	1	0	1.5	0	0
+EX	0	11	1	0	-1.5	0	0
+
+FR	0	0	0	0	5800	0
+EN

@@ -1,0 +1,38 @@
+CM Example 1 :	Dipole in free space 	
+CM See GetStarted.txt
+CM 
+CM 
+CM 
+CM 
+CE
+SY L=0.0517241379	'Wavelength at 5.8 GHz
+SY th=40.678	'Angle from horizontal axis
+SY W=.00051	'Width of wires
+SY OS=1.05*L	'Vertical offset
+SY ref_y=0.25*L	'Horizontal offset for reflector
+SY dir_y=0.13*L	'Horizontal offset for director
+SY L3=(138/150)*L/2/sin(th)	'Length of director
+SY L1=L/2/sin(th)	'Length of reflector
+SY L2=(143/150)*L/2/sin(th)	'Length of driver
+SY segs=20	'segments per wire
+GW	1	segs	0	0	0	0	L2*cos(th)	L2*sin(th)	W	'Wire 1, 9 segments, halve wavelength long.
+GW	2	segs	0	0	0	0	L2*cos(-th)	L2*sin(-th)	W
+GW	3	segs	0	-ref_y	0	0	L1*cos(th)-ref_y	L1*sin(th)	W
+GW	4	segs	0	-ref_y	0	0	L1*cos(-th)-ref_y	L1*sin(-th)	W
+GW	5	segs	0	dir_y	0	0	L3*cos(th)+dir_y	L3*sin(th)	W
+GW	6	segs	0	dir_y	0	0	L3*cos(-th)+dir_y	L3*sin(-th)	W
+GW	7	segs	0	0	OS	0	L2*cos(th)	L2*sin(th)+OS	W	'Wire 1, 9 segments, halve wavelength long.
+GW	8	segs	0	0	OS	0	L2*cos(-th)	L2*sin(-th)+OS	W
+GW	9	segs	0	-ref_y	OS	0	L1*cos(th)-ref_y	L1*sin(th)+OS	W
+GW	10	segs	0	-ref_y	OS	0	L1*cos(-th)-ref_y	L1*sin(-th)+OS	W
+GW	11	segs	0	dir_y	OS	0	L3*cos(th)+dir_y	L3*sin(th)+OS	W
+GW	12	segs	0	dir_y	OS	0	L3*cos(-th)+dir_y	L3*sin(-th)+OS	W
+GE	0
+GN	-1
+EK
+EX	0	1	1	0	1	0	0	'Voltage source (1+j0) at wire 1 segment 5.
+EX	0	2	1	0	-1	0	0
+EX	0	7	1	0	1	0	0	'Voltage source (1+j0) at wire 1 segment 5.
+EX	0	8	1	0	-1	0	0
+FR	0	0	0	0	5800	0
+EN

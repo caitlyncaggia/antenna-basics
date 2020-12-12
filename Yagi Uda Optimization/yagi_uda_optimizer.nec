@@ -1,0 +1,21 @@
+CM 
+CE
+SY Lrf=0.07266
+SY Ldr=0.070956
+SY Ldi=0.046905
+SY d1=0.079277
+SY d2=0.048306
+SY theta=40.03836
+GW	1	20	-d1	0	0	-d1+Lrf*sin(theta)	Lrf*cos(theta)	0	5E-4
+GW	2	20	0	0	0	Ldr*sin(theta)	Ldr*cos(theta)	0	5E-4
+GW	3	20	d2	0	0	d2+Ldi*sin(theta)	Ldi*cos(theta)	0	5E-4
+GW	4	20	-d1	0	0	-d1+Lrf*sin(theta)	-Lrf*cos(theta)	0	5E-4
+GW	5	20	0	0	0	Ldr*sin(theta)	-Ldr*cos(theta)	0	5E-4
+GW	6	20	d2	0	0	d2+Ldi*sin(theta)	-Ldi*cos(theta)	0	5E-4
+GE	0
+GN	-1
+EK
+EX	0	2	1	0	1.00E+00	0	0
+FR	0	0	0	0	1000	0
+RP	0	37	37	0	0.00000E+00	0.00000E+00	1.00000E+01	1.00000E+01		
+EN
